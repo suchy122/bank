@@ -29,35 +29,41 @@ else
         {
             $tab=$result->fetch_assoc();
             
-            // if(password_verify($haslo,$tab['haslo']))
-            // {
-                $_SESSION['zalogowany']=true;
+            if(password_verify($haslo,$tab['haslo']))
+            {
+                $_SESSION['zalogowany']="user";
                 $_SESSION['id'] = $tab['id'];
                 $_SESSION['login'] = $tab['login'];
+                $_SESSION['imie'] = $tab['imie'];
+                $_SESSION['nazwisko'] = $tab['nazwisko'];
+                $_SESSION['email'] = $tab['email'];
+                $_SESSION['PESEL'] = $tab['PESEL'];
+                $_SESSION['Nr_konta'] = $tab['Nr_konta'];
+                $_SESSION['Stan_konta'] = $tab['Stan_konta'];
                 unset($_SESSION['blad']);
                 $result->free_result();
                 header('Location: ../users/index.php');
-            // }else {
-            //     $_SESSION['blad'] = '<span style="color:red">Nieprawidłowy login lub hasło!</span>';
-            //     header('Location: login.php');
-            // }
+            }else {
+                $_SESSION['blad'] = '<span style="color:red">Nieprawidłowy login lub hasło!</span>';
+                header('Location: login.php');
+            }
         } elseif($result = @$conn->query(sprintf("SELECT * FROM admin WHERE login='%s'",mysqli_real_escape_string($conn,$login)))){
             if($result->num_rows==1){
                 $tab=$result->fetch_assoc();
 
-                // if(password_verify($haslo,$tab['haslo']))
-                // {
-                $_SESSION['zalogowany']=true;
+                if(password_verify($haslo,$tab['haslo']))
+                {
+                $_SESSION['zalogowany']="admin";
                 $_SESSION['id'] = $tab['id'];
                 $_SESSION['login'] = $tab['login'];
                 unset($_SESSION['blad']);
                 $result->free_result();
                 if($login=='admin')
                 header('Location: ../admin/index.php');
-                // }else {
-                //     $_SESSION['blad'] = '<span style="color:red">Nieprawidłowy login lub hasło!</span>';
-                //     header('Location: login.php');
-                // }
+                }else {
+                    $_SESSION['blad'] = '<span style="color:red">Nieprawidłowy login lub hasło!</span>';
+                    header('Location: login.php');
+                }
             }else {
                 $_SESSION['blad'] = '<span style="color:red">Nieprawidłowy login lub hasło!</span>';
                 header('Location: login.php');

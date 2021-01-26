@@ -33,7 +33,6 @@
         <div class="wrapper">
             <div class="jumbotron">
                 <h1>Logowanie</h1>
-                <h1>Logowanie</h1>
                 <form method="post" action="logging.php" role="form">
                 <input type="text" name="login" placeholder="Login" class="form-control"/><br>
                 <input type="password" name="haslo" placeholder="Hasło" class="form-control"/><br>
