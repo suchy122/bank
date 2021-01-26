@@ -4,6 +4,9 @@
     if(!isset($_SESSION['zalogowany'])){
         header('Location: ../index.php');
         exit();
+    } elseif(($_SESSION['zalogowany'] == "admin")){
+        header('Location: ../admin/index.php');
+        exit();
     }
 ?>
 
@@ -18,7 +21,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" style="color:white;"><b><?php echo "Witaj: ".$_SESSION['login'];?></b></a>
+                        <a class="nav-link" style="color:white;"><b><?php echo "Witaj: ".$_SESSION['imie']." ".$_SESSION['nazwisko'];?></b></a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="index.php">Home
@@ -63,3 +66,5 @@
         </div>
     </div>
 </body>
+
+</html>
