@@ -14,15 +14,15 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="../index.php">Home
-                            <span class="sr-only">(current)</span>
+                        <a class="nav-link" href="../index.php">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.php">Logowanie
+                        <span class="sr-only">(current)</span>       
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="login.php">Logowanie</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="login/register.php">Rejestracja</a>
+                        <a class="nav-link" href="register.php">Rejestracja</a>
                     </li>
                 </ul>
             </div>

@@ -42,7 +42,7 @@ body {
                     <p>
                     <h3>Dołącz do nas już dzisiaj, jesteśmy najlepsi na rynku!</h3>
                     </p>
-                    <form action="register.php">
+                    <form action="login/register.php">
                         <!-- <button type="button" class="btn btn-primary btn-lg">ZAREJESTRUJ SIĘ!</button> -->
                         <input type="submit" class="btn btn-primary btn-lg" value="ZAREJESTRUJ SIĘ!">
                     </form>
