@@ -1,5 +1,15 @@
 <?php
     include_once("head.php");
+    session_start();
+    unset($_SESSION['blad']);
+
+    if((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany'] == "admin")){
+        header('Location: admin/index.php');
+        exit();
+    } elseif((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany'] == "user")){
+        header('Location: user/index.php');
+        exit();
+    } 
 ?>
 
 <style>
