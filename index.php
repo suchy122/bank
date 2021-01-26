@@ -2,6 +2,11 @@
     include_once("head.php");
 ?>
 
+<style>
+    body {
+  background-image: url('bank.jpg');
+}
+</style>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
@@ -27,6 +32,23 @@
             </div>
         </div>
     </nav>
+
+    <div class="container">
+        <div class="wrapper">
+            <div class="jumbotron">
+                <center>
+                    <h1>Witaj w naszym banku!</h1>
+                    <p>
+                    <h3>Dołącz do nas już dzisiaj, jesteśmy najlepsi na rynku!</h3>
+                    </p>
+                    <form action="register.php">
+                        <!-- <button type="button" class="btn btn-primary btn-lg">ZAREJESTRUJ SIĘ!</button> -->
+                        <input type="submit" class="btn btn-primary btn-lg" value="ZAREJESTRUJ SIĘ!">
+                    </form>
+                </center>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
