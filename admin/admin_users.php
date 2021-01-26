@@ -83,10 +83,10 @@
                         <td><?php echo $row['PESEL']; ?></td>
                         <td><?php echo $row['Nr_konta']; ?></td>
                         <td><?php echo $row['Stan_konta']; ?></td>
-                        <td><a href="admin_edit_users.php?id=<?php echo $row['id']; ?>">
+                        <td><a href="admin_edit_user.php?id=<?php echo $row['id']; ?>">
                                 <i class="fas fa-edit" style="color: orange" ;></i>
                             </a></td>
-                        <td><a href="admin_delete_users.php?id=<?php echo $row['id']; ?>">
+                        <td><a href="admin_delete_user.php?id=<?php echo $row['id']; ?>">
                                 <i class="fas fa-trash-alt" style="color:black" ;> </i>
                             </a></td>
                     </tr>
@@ -98,8 +98,8 @@
             </div>
         </div>
         <?php
-	if(isset($conn)) {mysqli_close($conn);}
-?>
+	        if(isset($conn)) {mysqli_close($conn);}
+        ?>
 </body>
 
 </html>
