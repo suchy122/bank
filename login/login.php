@@ -1,17 +1,12 @@
 <?php
     include_once("head.php");
+    session_start();
 ?>
-
-<style>
-body {
-    background-image: url('bank.jpg');
-}
-</style>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="index.php">Bank</a>
+            <a class="navbar-brand" href="../index.php">Bank</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -19,12 +14,12 @@ body {
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.php">Home
+                        <a class="nav-link" href="../index.php">Home
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="login/login.php">Logowanie</a>
+                        <a class="nav-link" href="login.php">Logowanie</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="login/register.php">Rejestracja</a>
@@ -37,16 +32,19 @@ body {
     <div class="container">
         <div class="wrapper">
             <div class="jumbotron">
-                <center>
-                    <h1>Witaj w naszym banku!</h1>
-                    <p>
-                    <h3>Dołącz do nas już dzisiaj, jesteśmy najlepsi na rynku!</h3>
-                    </p>
-                    <form action="register.php">
-                        <!-- <button type="button" class="btn btn-primary btn-lg">ZAREJESTRUJ SIĘ!</button> -->
-                        <input type="submit" class="btn btn-primary btn-lg" value="ZAREJESTRUJ SIĘ!">
-                    </form>
-                </center>
+                <h1>Logowanie</h1>
+                <form method="POST" action="logging.php" role="form">
+                    <input type="text" name="login" placeholder="Login" class="form-control" /><br>
+                    <input type="password" name="password" placeholder="Hasło" class="form-control" /><br>
+                    <input type="submit" class="btn btn-primary" value="Zaloguj" name="loginn" />
+                </form>
+
+                <?php
+                    if(isset($_SESSION['blad'])){
+                        echo $_SESSION['blad'];
+                    }
+                ?>
+
             </div>
         </div>
     </div>
