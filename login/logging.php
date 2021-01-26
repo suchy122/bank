@@ -29,7 +29,7 @@ else
         {
             $tab=$result->fetch_assoc();
             
-            if(password_verify($haslo,$tab['haslo']))
+            if(password_verify($haslo,$tab['password']))
             {
                 $_SESSION['zalogowany']="user";
                 $_SESSION['id'] = $tab['id'];
@@ -42,7 +42,7 @@ else
                 $_SESSION['Stan_konta'] = $tab['Stan_konta'];
                 unset($_SESSION['blad']);
                 $result->free_result();
-                header('Location: ../users/index.php');
+                header('Location: ../user/index.php');
             }else {
                 $_SESSION['blad'] = '<span style="color:red">Nieprawidłowy login lub hasło!</span>';
                 header('Location: login.php');
