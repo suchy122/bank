@@ -18,7 +18,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="login.php">Logowanie
-                        <span class="sr-only">(current)</span>       
+                            <span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -33,14 +33,15 @@
         <div class="wrapper">
             <div class="jumbotron">
                 <h1>Logowanie</h1>
-                <form method="POST" action="logging.php" role="form">
-                    <input type="text" name="login" placeholder="Login" class="form-control" /><br>
-                    <input type="password" name="password" placeholder="Hasło" class="form-control" /><br>
-                    <input type="submit" class="btn btn-primary" value="Zaloguj" name="loginn" />
+                <h1>Logowanie</h1>
+                <form method="post" action="logging.php" role="form">
+                <input type="text" name="login" placeholder="Login" class="form-control"/><br>
+                <input type="password" name="haslo" placeholder="Hasło" class="form-control"/><br>
+                <input type="submit" class="btn btn-primary" value="Zaloguj" name="loginn" />
                 </form>
-
+                
                 <?php
-                    if(isset($_SESSION['blad'])){
+                    if(isset($_SESSION['blad'])){ 
                         echo $_SESSION['blad'];
                     }
                 ?>
