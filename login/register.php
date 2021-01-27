@@ -24,7 +24,7 @@
 
         try{
             $con = new mysqli($host,$db_user,$db_password,$db_name);
-            if($conn->connect_errno!=0)
+            if($con->connect_errno!=0)
             {
                 throw new Exception(mysqli_connect_errno());
             } else {
@@ -53,7 +53,7 @@
                         $_SESSION['rejestracja']=true;
                         header('Location: login.php');
                     } else {
-                        throw new Exception($conn->error);
+                        throw new Exception($con->error);
                     }
                 }
 
