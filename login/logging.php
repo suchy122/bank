@@ -2,6 +2,14 @@
     
 session_start();
 
+if((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany'] == "admin")){
+    header('Location: ../admin/index.php');
+    exit();
+} elseif((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany'] == "user")){
+    header('Location: ../user/index.php');
+    exit();
+} 
+
 if((!isset($_POST['login'])) || (!isset($_POST['haslo'])))
 {
     header('Location: ../index.php');
@@ -65,6 +73,7 @@ else
                     header('Location: login.php');
                 }
             }else {
+                $_SESSION['zalogowany'] = false;
                 $_SESSION['blad'] = '<span style="color:red">Nieprawidłowy login lub hasło!</span>';
                 header('Location: login.php');
                 }
