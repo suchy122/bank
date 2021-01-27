@@ -8,6 +8,8 @@
         header('Location: ../user/index.php');
         exit();
     }
+
+    
 ?>
 
 <body>

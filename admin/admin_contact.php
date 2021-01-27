@@ -9,24 +9,20 @@
         exit();
     }
 
-    include_once("../database/connect.php");
-    $con = @new mysqli($host,$db_user,$db_password,$db_name);
-
-    if($con->connect_errno!=0)
-    {
-        echo "Error: ".$con->connect_errno;
-    }
+    require_once "../database/connect.php";
+    $con = new mysqli($host,$db_user,$db_password,$db_name);
 
     function getAll($con){
-		$query = "SELECT * from users ORDER BY id ASC";
-		$result = mysqli_query($con, $query);
-		if(!$result){
-			echo "Nie znaleziono danych " . mysqli_error($con);
-			exit;
-		}
-		return $result;
-	}
-	$result = getAll($con);
+        $query = "SELECT * FROM contact ORDER BY id ASC";
+        $result = mysqli_query($con,$query);
+        if($result){
+            return $result;
+        } else {
+            echo "Nie znaleziono danych ".mysqli_error($con);
+            exit;
+        }
+    }
+    $result = getAll($con);
 ?>
 
 <body>
@@ -54,12 +50,9 @@
             </div>
         </div>
     </nav>
-
     <div class="container">
         <div class="wrapper">
             <div class="jumbotron">
-                <p class="lead"><br><a href="admin_add_users.php" class="btn btn-success"><i
-                            class="fas fa-plus-circle"></i> Dodaj nowego klienta</a></p>
 
                 <table class="table" style="margin-top: 20px">
                     <tr>
@@ -67,11 +60,7 @@
                         <th>Imie</th>
                         <th>Nazwisko</th>
                         <th>Email</th>
-                        <th>PESEL</th>
-                        <th>Nr_konta</th>
-                        <th>Stan_konta</th>
-                        <th>&nbsp;</th>
-                        <th>&nbsp;</th>
+                        <th>Wiadomość</th>
                     </tr>
                     <?php while($row = mysqli_fetch_assoc($result)){ ?>
                     <tr>
@@ -80,26 +69,14 @@
                         <td><?php echo $row['nazwisko']; ?></td>
                         <td><?php echo $row['email']; ?></td>
 
-                        <td><?php echo $row['PESEL']; ?></td>
-                        <td><?php echo $row['Nr_konta']; ?></td>
-                        <td><?php echo $row['Stan_konta']; ?></td>
-                        <td><a href="admin_edit_user.php?id=<?php echo $row['id']; ?>">
-                                <i class="fas fa-edit" style="color: orange" ;></i>
-                            </a></td>
-                        <td><a href="admin_delete_user.php?id=<?php echo $row['id']; ?>">
-                                <i class="fas fa-trash-alt" style="color:black" ;> </i>
-                            </a></td>
+                        <td><?php echo $row['message']; ?></td>
                     </tr>
                     <?php } ?>
-                </table>
-
-                <a href="index.php" class="btn btn-primary"><i class="fas fa-backward"></i>
-                    Powrót</a><br><br><br>
+                </table><br><br>
+                <a href="index.php" class="btn btn-primary"><i class="fas fa-backward"></i> Powrót</a>
             </div>
         </div>
-        <?php
-	        if(isset($conn)) {mysqli_close($conn);}
-        ?>
+    </div>
 </body>
 
 </html>

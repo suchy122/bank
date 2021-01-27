@@ -3,13 +3,13 @@
     session_start();
     unset($_SESSION['blad']);
 
-    if((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany'] == "admin")){
+    if(!isset($_SESSION['zalogowany'])){
+        header('Location: ../index.php');
+        exit();
+    } elseif(($_SESSION['zalogowany'] == "admin")){
         header('Location: ../admin/index.php');
         exit();
-    } elseif((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany'] == false)){
-        header('Location: ../user/index.php');
-        exit();
-    } 
+    }
 
 
     if(isset($_POST['message'])){
