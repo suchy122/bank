@@ -39,8 +39,9 @@
             } else {
                 $result = $con->query("SELECT id from users WHERE login='$login'");
                 $result2 = $con->query("SELECT id from users WHERE email='$email'");
+                $result3 = $con->query("SELECT id from admin WHERE login='$login'");
 
-                if(!$result) throw new Exception($conn->error);
+                if(!$result) throw new Exception($con->error);
                 
                 if($result->num_rows>0 )
                 {
@@ -49,6 +50,12 @@
                 }
                 
                 if($result2->num_rows>0)
+                {
+                    $wszystko_ok=false;
+                    $_SESSION['e_email']="Taki użytkownik już jest w bazie!";   
+                }
+
+                if($result3->num_rows>0)
                 {
                     $wszystko_ok=false;
                     $_SESSION['e_email']="Taki email już jest w bazie!";   
