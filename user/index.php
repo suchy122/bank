@@ -8,6 +8,28 @@
         header('Location: ../admin/index.php');
         exit();
     }
+
+    require_once "../database/connect.php";
+
+    $con = @new mysqli($host,$db_user,$db_password,$db_name);
+
+    if($con->connect_errno!=0)
+    {
+        echo "Error".$con->connect_errno;
+    }
+
+    function getAll($con){
+        $konto = $_SESSION['Nr_konta'];
+        $query = "SELECT * FROM payments WHERE konto_z = $konto";
+        $result = mysqli_query($con, $query);
+        if(!$result) {
+            echo "Nie znaleziono danych " .mysqli_error($con);
+            exit;
+        }
+        return $result;
+    }
+
+    $result = getAll($con);
 ?>
 
 <body>
@@ -64,7 +86,30 @@
                     </table>
                     <form action="pay.php">
                         <input type="submit" class="btn btn-primary" value="Przelew">
-                    </form>
+                    </form><br><br>
+
+                    <h1>Historia tranzakcji</h1>
+                    <table class="table" style="margin-top: 20px">
+                        <tr>
+                            <th>Nazwa odbiorcy</th>
+                            <th>Numer konta odbiorcy</th>
+                            <th>Kwota</th>
+                            <th>Data przelewu</th>
+                            <th>Status przelewu</th>
+                        </tr>
+                        <?php while($row = mysqli_fetch_assoc($result)){ ?>
+                        <tr>
+                            <td><?php echo $row['nazwa_odbiorcy']; ?></td>
+                            <td><?php echo $row['konto_do']; ?></td>
+                            <td><?php echo $row['kwota']; ?> zł</td>
+                            <td><?php echo $row['tytul']; ?></td>
+                            <td><?php echo $row['data']; ?></td>
+                            <td><?php if($row['status'] == 1){ echo "Oczekujący";}
+                            elseif ($row['status'] == 2){ echo "Zaakceptowany";}
+                            elseif ($row['status'] == 3){ echo "Odrzucony";}?></td>
+                        </tr>
+                        <?php } ?>
+                    </table>
                 </center>
             </div>
         </div>
