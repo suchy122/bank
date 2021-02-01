@@ -46,8 +46,9 @@
 
                     <h1>Przelew bankowy</h2>
                         <form method="POST" id="from"><br>
-                            <input type="text" name="nazwa_nadawcy" id="nazwa_nadawcy" value="<?php echo $_SESSION['imie'].' '.$_SESSION['nazwisko']; ?>"
-                                class="form-control" disabled /><br>
+                            <input type="text" name="nazwa_nadawcy" id="nazwa_nadawcy"
+                                value="<?php echo $_SESSION['imie'].' '.$_SESSION['nazwisko']; ?>" class="form-control"
+                                disabled /><br>
                             <input type="text" name="konto_z" id="konto_z" value="<?php echo $_SESSION['Nr_konta']; ?>"
                                 class="form-control" disabled /><br>
                             <input type="text" name="nazwa_odbiorcy" id="nazwa_odbiorcy" placeholder="Nazwa odbiorcy"
@@ -62,37 +63,43 @@
                             <input type="submit" name="submit" id="submit" class="btn btn-primary" value="Wyślij"
                                 name="wyslij" />
                         </form>
-                        <?php
-                            if(isset($_SESSION['pay_error'])){ 
-                                echo $_SESSION['pay_error'];
-                            }
-                ?>
                 </center>
             </div>
         </div>
     </div>
     <script src="pay.js"></script>
-      <!--- ZMIEŃ NA SCIEŻKĘ DO SKRYPTU-->
-      <script>
-        const addform = document.getElementById('from');
-        addform.addEventListener('submit', function (e) {
-          e.preventDefault();
-          const obj = {
+    <!--- ZMIEŃ NA SCIEŻKĘ DO SKRYPTU-->
+    <script>
+    const addform = document.getElementById('from');
+    addform.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const obj = {
             Title: from['tytul'].value,
             Date: from['data'].value,
-            Value: from['kwota'].value,
+            Value: Number(from['kwota'].value),
             SenderName: from['nazwa_nadawcy'].value,
             RecipientName: from['nazwa_odbiorcy'].value,
             SenderAccountNumber: from['konto_z'].value,
             RecipientAccountNumber: from['konto_do'].value
-          }
+        }
+        postData(obj);
 
-          console.log(obj);
-
-          postData(obj);
-          document.getElementById('from').reset();
-        })
-      </script>
+        const obj2 = {
+            konto_z: from['konto_z'].value,
+            nazwa_odbiorcy: from['nazwa_odbiorcy'].value,
+            konto_do: from['konto_do'].value,
+            kwota: from['kwota'].value,
+            tytul: from['tytul'].value,
+            data: from['data'].value,
+            status: "1"
+        }
+        postData2(obj2);
+        
+        document.getElementById('from').reset();
+    })
+    
+    </script>
+    
 </body>
 
 </html>
