@@ -63,6 +63,7 @@
                             <input type="submit" name="submit" id="submit" class="btn btn-primary" value="Wyślij"
                                 name="wyslij" />
                         </form>
+                        <div id="app"></div>
                 </center>
             </div>
         </div>

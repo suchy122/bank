@@ -48,3 +48,25 @@ function postData2(obj2)
 
     });
 }
+function fetchData(){
+    fetch('https://www.settlementunit.somee.com/api/SettlementUnit/95720693')
+        .then(response => {
+            if (!response.ok){
+                throw Error('ERROR');
+            }
+            return response.json();
+        })
+        .then(data => {
+        console.log(data);
+            const html = data.records
+            .map(kontrahenci => {
+                return `<?php echo $_SESSION['imie']; ?>`;
+            })
+            .join("");
+            document.querySelector("#app").insertAdjacentHTML("afterbegin", html);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+}
+fetchData();
