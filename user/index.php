@@ -85,8 +85,13 @@
                         </tr>
                     </table>
                     <form action="pay.php">
-                        <input type="submit" class="btn btn-primary" value="Przelew">
-                    </form><br><br>
+                        <input type="submit" class="btn btn-primary" value="Przelew wewnętrzny">
+                    </form><br>
+                    
+                    <form action="pay3.php">
+                        <input type="submit" class="btn btn-primary" value="Przelew zewnętrzny">
+                    </form>
+                    <br><br>
 
                     <h1>Historia tranzakcji</h1>
                     <table class="table" style="margin-top: 20px">
@@ -94,6 +99,7 @@
                             <th>Nazwa odbiorcy</th>
                             <th>Numer konta odbiorcy</th>
                             <th>Kwota</th>
+                            <th>Tytuł przelewu</th>
                             <th>Data przelewu</th>
                             <th>Status przelewu</th>
                         </tr>
