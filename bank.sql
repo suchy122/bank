@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 31 Sty 2021, 14:19
+-- Czas generowania: 02 Lut 2021, 14:56
 -- Wersja serwera: 10.4.17-MariaDB
 -- Wersja PHP: 8.0.0
 
@@ -63,8 +63,7 @@ CREATE TABLE `contact` (
 --
 
 INSERT INTO `contact` (`id`, `imie`, `nazwisko`, `email`, `message`) VALUES
-(1, 'Test', 'Test', 'test@test.com', 'Testowa wiadomość o pomoc'),
-(10, 'Testowy', 'Test', 'test@test.com', 'Testowa wiadomosc');
+(1, 'Test', 'Test', 'test@test.com', 'Testowa wiadomość o pomoc');
 
 -- --------------------------------------------------------
 
@@ -83,14 +82,6 @@ CREATE TABLE `payments` (
   `data` date NOT NULL,
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
-
---
--- Zrzut danych tabeli `payments`
---
-
-INSERT INTO `payments` (`id`, `konto_z`, `nazwa_odbiorcy`, `konto_do`, `kwota`, `tytul`, `data`, `status`) VALUES
-(17, '95720693676196086810806314', 'Test123', '11111693676196086810806111', 10, 'Tes213t', '2021-02-03', 2),
-(19, '95720693676196086810806314', 'Test123', '11111693676196086810806111', 10, 'Tes213t', '2021-02-03', 1);
 
 -- --------------------------------------------------------
 
@@ -116,7 +107,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `login`, `password`, `imie`, `nazwisko`, `email`, `PESEL`, `Nr_konta`, `Stan_konta`) VALUES
-(26, 'test', '$2y$10$A6CIU1gubLMVxArQltZgxe4Xmix0Vf4SvQ/ZtZKTMM64SJJStf1x2', 'Testowy', 'Test', 'test@test.com', '11111111111', '95720693676196086810806314', '23.99');
+(1, 'test', '$2y$10$QvcmSr0BGhac9lCe9JJmS.2iiMj0rOJAJKzBPI83NEGffCZyK8lhy', 'Jan', 'Kowalski', 'test@test.com', '11223312345', '95720693603747540519212518', '10000');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -162,19 +153,19 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT dla tabeli `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT dla tabeli `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT dla tabeli `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Ograniczenia dla zrzutów tabel
