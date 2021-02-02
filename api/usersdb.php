@@ -25,4 +25,25 @@ class users
         $stmt->execute();
         return $stmt;
     }
+
+    public function update()
+    {
+        $query = "UPDATE " . $this->table_name . " SET Stan_konta=Stan_konta+:Stan_konta WHERE Nr_konta=:Nr_konta";
+        $stmt = $this->conn->prepare($query);
+
+        $this->Nr_konta = htmlspecialchars(strip_tags($this->Nr_konta));
+        $this->Stan_konta = htmlspecialchars(strip_tags($this->Stan_konta));
+
+        $stmt->bindParam(":Nr_konta", $this->Nr_konta);
+        $stmt->bindParam(":Stan_konta", $this->Stan_konta);
+
+
+
+        if ($stmt->execute()) {
+            return true;
+        }
+
+        return false;
+    }
+
 }

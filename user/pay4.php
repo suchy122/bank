@@ -48,6 +48,28 @@ function postData2(obj2)
 
     });
 }
+// function fetchData(){
+//     fetch('https://www.settlementunit.somee.com/api/SettlementUnit/95720693')
+//         .then(response => {
+//             if (!response.ok){
+//                 throw Error('ERROR');
+//             }
+//             return response.json();
+//         })
+//         .then(data => {
+//         console.log(data);
+//             const html = data.records
+//             .map(Transfers => {
+//                 return `<?php echo $_SESSION['imie']; ?>`;
+//             })
+//             .join("");
+//             document.querySelector("#app").insertAdjacentHTML("afterbegin", html);
+//         })
+//         .catch(error => {
+//             console.log(error);
+//         });
+// }
+// fetchData();
 
 function fetchData(){
     fetch('https://www.settlementunit.somee.com/api/SettlementUnit/957')
@@ -61,8 +83,7 @@ function fetchData(){
         console.log(data);
             const html = data
             .map(Transfers => {
-                //console.log(Transfers.recipientAccountNumber);
-                return postData2(data),updateJson(Transfers.recipientAccountNumber,Transfers.value);
+                return ` <div><?php echo "siema"; ?></div>`;
             })
             .join("");
             document.querySelector("#app").insertAdjacentHTML("afterbegin", html);
@@ -72,38 +93,3 @@ function fetchData(){
         });
 }
 fetchData();
-
-function updateJson(RecipientAccountNumber,Value){
-    //console.log(RecipientAccountNumber);
-    //console.log(Value);
-    const obj3 = {
-        Nr_konta: RecipientAccountNumber,
-        Stan_konta: Value
-    }
-    //console.log(obj3);
-    updateUser(obj3)
-}
-
-function updateUser(obj3){
-    fetch('http://localhost/bank/api/endpoint/updateuser.php', {
-        method: "PUT",
-        headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json"
-        },
-        body: JSON.stringify(obj3)
-        })
-        .then(response => {
-        if (!response.ok){
-        throw Error('ERROR');
-        }
-        return response.json();
-        })
-        .then(data => {
-        console.log(data);  
-        })
-        .catch(error => {
-        console.log(error);
-    
-        });
-}
