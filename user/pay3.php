@@ -85,16 +85,16 @@
         }
         postData(obj);
 
-        const obj2 = {
-            konto_z: from['konto_z'].value,
-            nazwa_odbiorcy: from['nazwa_odbiorcy'].value,
-            konto_do: from['konto_do'].value,
-            kwota: from['kwota'].value,
-            tytul: from['tytul'].value,
-            data: from['data'].value,
-            status: "1"
-        }
-        postData2(obj2);
+        // const obj2 = {
+        //     konto_z: from['konto_z'].value,
+        //     nazwa_odbiorcy: from['nazwa_odbiorcy'].value,
+        //     konto_do: from['konto_do'].value,
+        //     kwota: from['kwota'].value,
+        //     tytul: from['tytul'].value,
+        //     data: from['data'].value,
+        //     status: "1"
+        // }
+        // postData2(obj2);
         
         document.getElementById('from').reset();
     })

@@ -20,7 +20,7 @@
 
     function getAll($con){
         $konto = $_SESSION['Nr_konta'];
-        $query = "SELECT * FROM payments WHERE konto_z = $konto";
+        $query = "SELECT * FROM payments WHERE konto_z = $konto OR konto_do = $konto";
         $result = mysqli_query($con, $query);
         if(!$result) {
             echo "Nie znaleziono danych " .mysqli_error($con);
@@ -96,6 +96,7 @@
                     <h1>Historia tranzakcji</h1>
                     <table class="table" style="margin-top: 20px">
                         <tr>
+                            <th>Numer konta nadawcy</th>
                             <th>Nazwa odbiorcy</th>
                             <th>Numer konta odbiorcy</th>
                             <th>Kwota</th>
@@ -105,6 +106,7 @@
                         </tr>
                         <?php while($row = mysqli_fetch_assoc($result)){ ?>
                         <tr>
+                            <td><?php echo $row['konto_z']; ?></td>
                             <td><?php echo $row['nazwa_odbiorcy']; ?></td>
                             <td><?php echo $row['konto_do']; ?></td>
                             <td><?php echo $row['kwota']; ?> zł</td>

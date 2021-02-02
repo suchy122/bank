@@ -37,8 +37,10 @@
             unset($_SESSION['pay_error']);
             if($con->query("INSERT INTO payments VALUES ('','$konto_z','$nazwa_odbiorcy','$konto_do','$kwota','$tytul','$data','$status')")){
                 $stan_konta = $_SESSION['Stan_konta'] - $kwota;
+                unset($_SESSION['Stan_konta']);
                 $_SESSION['Stan_konta'] = $stan_konta;
-                if($con->query("UPDATE users SET Stan_konta = $stan_konta")){
+                if($con->query("UPDATE users SET Stan_konta = $stan_konta WHERE Nr_konta=$konto_z")){
+                    $con->query("UPDATE users SET Stan_konta =Stan_konta + $kwota WHERE Nr_konta=$konto_do");
                     echo '<script>alert("Przelew udany, oczekuje na akceptacje")</script>';
                     header('Location: index.php');
                 }
