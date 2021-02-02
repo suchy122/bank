@@ -67,7 +67,7 @@ function updateJson(RecipientAccountNumber,Value){
 }
 
 function updateUser(obj3){
-    fetch('http://localhost/bank-1/api/endpoint/updateuser.php', {
+    fetch('http://localhost/bank/api/endpoint/updateuser.php', {
         method: "PUT",
         headers: {
         "Accept": "application/json",
@@ -102,7 +102,7 @@ function updateJson2(senderAccountNumber,Value){
 }
 
 function updateUser2(obj4){
-    fetch('http://localhost/bank-1/api/endpoint/updateuser2.php', {
+    fetch('http://localhost/bank/api/endpoint/updateuser2.php', {
         method: "PUT",
         headers: {
         "Accept": "application/json",
@@ -140,7 +140,7 @@ function createPay(konto_z, nazwa_odbiorcy, konto_do, kwota, tytul, data,){
 
 function postData2(obj5)
 {
-    fetch('http://localhost/bank-1/api/endpoint/createpay.php', {
+    fetch('http://localhost/bank/api/endpoint/createpay.php', {
     method: "POST",
     headers: {
     "Accept": "application/json",
@@ -178,7 +178,7 @@ function createPay2(konto_z, nazwa_odbiorcy, konto_do, kwota, tytul, data,){
 
 function postData2(obj6)
 {
-    fetch('http://localhost/bank-1/api/endpoint/createpay.php', {
+    fetch('http://localhost/bank/api/endpoint/createpay.php', {
     method: "POST",
     headers: {
     "Accept": "application/json",
