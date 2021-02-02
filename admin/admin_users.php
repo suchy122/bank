@@ -58,7 +58,7 @@
     <div class="container">
         <div class="wrapper">
             <div class="jumbotron">
-                <p class="lead"><br><a href="admin_add_users.php" class="btn btn-success"><i
+                <p class="lead"><br><a href="admin_add_user.php" class="btn btn-success"><i
                             class="fas fa-plus-circle"></i> Dodaj nowego klienta</a></p>
 
                 <table class="table" style="margin-top: 20px">
