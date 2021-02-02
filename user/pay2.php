@@ -28,7 +28,7 @@
         $kwota = $_POST['kwota'];
         $tytul = $_POST['tytul'];
         $data = $_POST['data'];
-        $status = 1;
+        $status = 2;
 
         if($kwota>$_SESSION['Stan_konta']){
             $_SESSION['pay_error'] = '<span style="color:red">Nie możesz przelać więcej niż masz!</span>';
